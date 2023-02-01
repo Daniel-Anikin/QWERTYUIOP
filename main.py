@@ -64,13 +64,13 @@ def load_image(name, colorkey=None):
     return image
 
 
-all_sprites = pygame.sprite.Group()
 pygame.init()
-size = width, height = 800, 800
+image_ = Image.open(BytesIO(response.content))
+image_.save("data/map.png")
+size = width, height = image_.size
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption('Большая задача по Maps API. Часть №1')
-image = Image.open(BytesIO(response.content))
-image.save("data/map.png")
+all_sprites = pygame.sprite.Group()
 sprite = pygame.sprite.Sprite()
 sprite.image = load_image("map.png")
 sprite.rect = sprite.image.get_rect()
